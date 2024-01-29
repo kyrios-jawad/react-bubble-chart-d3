@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 
-import BubbleChart from 'react-bubble-chart-d3';
+import BubbleChart from './module/index';
 
 import './App.css';
 
@@ -20,22 +20,46 @@ class App extends Component {
           height={800}
           fontFamily="Arial"
           data={[
-            { label: 'CRM', value: 1 },
-            { label: 'API', value: 1 },
-            { label: 'Data', value: 1 },
-            { label: 'Commerce', value: 1 },
-            { label: 'AI', value: 3 },
-            { label: 'Management', value: 5 },
-            { label: 'Testing', value: 6 },
-            { label: 'Mobile', value: 9 },
-            { label: 'Conversion', value: 9 },
-            { label: 'Misc', value: 21 },
-            { label: 'Databases', value: 22 },
-            { label: 'DevOps', value: 22 },
-            { label: 'Javascript', value: 23 },
-            { label: 'Languages / Frameworks', value: 25 },
-            { label: 'Front End', value: 26 },
-            { label: 'Content', value: 26 },
+            {
+              src: "/path.svg",
+              label: "Kirby",
+              value: 4000000,
+            },
+            {
+              src: "",
+              label: "API",
+              value: 500000,
+            },
+            {
+              src: " ",
+              label: "Data",
+              value: 1500000,
+            },
+            {
+              src: " ",
+              label: "Commerce",
+              value: 30000,
+            },
+            {
+              src: " ",
+              label: "AI",
+              value: 70000,
+            },
+            {
+              src: " ",
+              label: "Management",
+              value: 500000,
+            },
+            {
+              src: " ",
+              label: "Mobile",
+              value: 70000,
+            },
+            {
+              src: " ",
+              label: "Conversion",
+              value: 70000,
+            },
           ]}
         />
       </div>
