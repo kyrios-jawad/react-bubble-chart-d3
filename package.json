@@ -10,11 +10,11 @@
     "Bubble",
     "Graphics"
   ],
-  "author": "weKnow Inc",
+  "author": "maksof-jawad",
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/weknowinc/react-bubble-chart-d3"
+    "url": "https://github.com/maksof-jawad/react-bubble-chart-d3"
   },
   "main": "lib/index.js",
   "peerDependencies": {},
