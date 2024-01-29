@@ -119,7 +119,7 @@ export default class BubbleChart extends Component {
       .attr("id", function (d) { return d.id; })
       .attr("r", function (d) { return d.r - (d.r * .04); })
       .style("fill", function (d) { return "green" })
-      .style("z-index", 1).style("filter", "url(#drop-shadow)") 
+      .style("z-index", 1).style("filter", "url(#drop-shadow)")
       .on('mouseover', function (d) {
         d3.select(this).attr("r", d.r * 1.04);
       })
@@ -129,42 +129,40 @@ export default class BubbleChart extends Component {
       });
 
     // Define the filter
-    var defs = circle.append("defs");
+    const defs = circle.append("defs");
 
-    var filter = defs.append("filter")
-    .attr("id", "drop-shadow")
-    .attr("height", "150%");  // Increase the height to accommodate the larger shadow
+    const filter = defs.append("filter")
+      .attr("id", "drop-shadow")
+      .attr("height", "150%");
 
-filter.append("feGaussianBlur")
-    .attr("in", "SourceAlpha")
-    .attr("stdDeviation", 5)  // Adjust for desired blur amount
-    .attr("result", "blur");
+    filter.append("feGaussianBlur")
+      .attr("in", "SourceAlpha")
+      .attr("stdDeviation", 5) 
+      .attr("result", "blur");
 
-filter.append("feOffset")
-    .attr("in", "blur")
-    .attr("dx", 0)  // No horizontal offset
-    .attr("dy", 10)  // Increase vertical offset for a larger shadow
-    .attr("result", "offsetBlur");
+    filter.append("feOffset")
+      .attr("in", "blur")
+      .attr("dx", 0) 
+      .attr("dy", 10)
+      .attr("result", "offsetBlur");
 
-// Add color to the shadow
-filter.append("feFlood")
-    .attr("flood-color", "rgba(18, 20, 28, 1)")
-    .attr("result", "color");
+    // Add color to the shadow
+    filter.append("feFlood")
+      .attr("flood-color", "rgba(18, 20, 28, 1)")
+      .attr("result", "color");
 
-// Composite the colored shadow and the offset blur
-filter.append("feComposite")
-    .attr("in", "color")
-    .attr("in2", "offsetBlur")
-    .attr("operator", "in")
-    .attr("result", "shadow");
+    // Composite the colored shadow and the offset blur
+    filter.append("feComposite")
+      .attr("in", "color")
+      .attr("in2", "offsetBlur")
+      .attr("operator", "in")
+      .attr("result", "shadow");
 
-var feMerge = filter.append("feMerge");
-
-// Merge the shadow and the original graphic
-feMerge.append("feMergeNode")
-    .attr("in", "shadow");
-feMerge.append("feMergeNode")
-    .attr("in", "SourceGraphic");
+    const feMerge = filter.append("feMerge");
+    feMerge.append("feMergeNode")
+      .attr("in", "shadow");
+    feMerge.append("feMergeNode")
+      .attr("in", "SourceGraphic");
 
 
     // Add a secondary circle above each existing circle
