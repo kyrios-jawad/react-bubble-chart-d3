@@ -25,41 +25,41 @@ class App extends Component {
               label: "Kirby",
               value: 4000000,
             },
-            {
-               src: "/icon.jpeg",
-              label: "API",
-              value: 500000,
-            },
-            {
-               src: "/icon.jpeg",
-              label: "Data",
-              value: 1500000,
-            },
-            {
-               src: "/icon.jpeg",
-              label: "Commerce",
-              value: 30000,
-            },
-            {
-               src: "/icon.jpeg",
-              label: "AI",
-              value: 70000,
-            },
-            {
-               src: "/icon.jpeg",
-              label: "Management",
-              value: 500000,
-            },
-            {
-               src: "/icon.jpeg",
-              label: "Mobile",
-              value: 70000,
-            },
-            {
-               src: "/icon.jpeg",
-              label: "Conversion",
-              value: 70000,
-            },
+            // {
+            //    src: "/icon.jpeg",
+            //   label: "API",
+            //   value: 500000,
+            // },
+            // {
+            //    src: "/icon.jpeg",
+            //   label: "Data",
+            //   value: 1500000,
+            // },
+            // {
+            //    src: "/icon.jpeg",
+            //   label: "Commerce",
+            //   value: 30000,
+            // },
+            // {
+            //    src: "/icon.jpeg",
+            //   label: "AI",
+            //   value: 70000,
+            // },
+            // {
+            //    src: "/icon.jpeg",
+            //   label: "Management",
+            //   value: 500000,
+            // },
+            // {
+            //    src: "/icon.jpeg",
+            //   label: "Mobile",
+            //   value: 70000,
+            // },
+            // {
+            //    src: "/icon.jpeg",
+            //   label: "Conversion",
+            //   value: 70000,
+            // },
           ]}
         />
       </div>
