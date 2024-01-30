@@ -16,47 +16,47 @@ class App extends Component {
         <h1 className="App-intro">Example of 'react-bubble-chart-d3' Component.</h1>
         <br />
         <BubbleChart
-          width={800}
-          height={800}
+          width={1000}
+          height={1000}
           fontFamily="Arial"
           data={[
             {
-              src: "/path.svg",
+              src: "/icon.jpeg",
               label: "Kirby",
               value: 4000000,
             },
             {
-              src: "",
+               src: "/icon.jpeg",
               label: "API",
               value: 500000,
             },
             {
-              src: " ",
+               src: "/icon.jpeg",
               label: "Data",
               value: 1500000,
             },
             {
-              src: " ",
+               src: "/icon.jpeg",
               label: "Commerce",
               value: 30000,
             },
             {
-              src: " ",
+               src: "/icon.jpeg",
               label: "AI",
               value: 70000,
             },
             {
-              src: " ",
+               src: "/icon.jpeg",
               label: "Management",
               value: 500000,
             },
             {
-              src: " ",
+               src: "/icon.jpeg",
               label: "Mobile",
               value: 70000,
             },
             {
-              src: " ",
+               src: "/icon.jpeg",
               label: "Conversion",
               value: 70000,
             },

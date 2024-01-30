@@ -118,7 +118,7 @@ export default class BubbleChart extends Component {
     let circle = node.append("circle")
       .attr("id", function (d) { return d.id; })
       .attr("r", function (d) { return d.r - (d.r * .04); })
-      .style("fill", function (d) { return "green" })
+      .style("fill", function (d) { return "#12141C" })
       .style("z-index", 1).style("filter", "url(#drop-shadow)")
       .on('mouseover', function (d) {
         d3.select(this).attr("r", d.r * 1.04);
@@ -137,12 +137,12 @@ export default class BubbleChart extends Component {
 
     filter.append("feGaussianBlur")
       .attr("in", "SourceAlpha")
-      .attr("stdDeviation", 5) 
+      .attr("stdDeviation", 5)
       .attr("result", "blur");
 
     filter.append("feOffset")
       .attr("in", "blur")
-      .attr("dx", 0) 
+      .attr("dx", 0)
       .attr("dy", 10)
       .attr("result", "offsetBlur");
 
@@ -165,16 +165,11 @@ export default class BubbleChart extends Component {
       .attr("in", "SourceGraphic");
 
 
-    // Add a secondary circle above each existing circle
-    node.append("circle")
-      .attr("class", "secondary-circle")
-      .attr("r", function (d) { return d.r * 0.2;; }) // size of secondary circle as needed
-      .style("fill", "black")
     node.append("image")
       .attr("xlink:href", function (d) { return d.data.src })
-      .attr("x", function (d) { return -d.r * 0.2; }) // Adjust the positioning as needed
-      .attr("y", function (d) { return -d.r * 0.2; }) // Adjust the positioning as needed
-      .attr("width", function (d) { return d.r * 0.2; }) // Adjust the size as needed
+      .attr("x", function (d) { return -d.r * 0.2; })
+      .attr("y", function (d) { return -d.r * 0.2; })
+      .attr("width", function (d) { return d.r * 0.2; })
       .attr("height", function (d) { return d.r * 0.2; })
 
     node.append("clipPath")
@@ -236,7 +231,7 @@ export default class BubbleChart extends Component {
         return d.hideLabel ? 0 : 1;
       })
       .attr("y", function (d) {
-        return labelFont.size / 2
+        return labelFont.size
       })
 
     // Center the texts inside the circles.
@@ -246,11 +241,7 @@ export default class BubbleChart extends Component {
       return -(width / 2);
     })
       .attr("y", function (d) {
-        if (d.hideLabel) {
-          return valueFont.size / 3;
-        } else {
-          return -valueFont.size * 0.5;
-        }
+        return valueFont.size*2
       });
 
     node.append("title")
