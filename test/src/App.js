@@ -24,17 +24,17 @@ class App extends Component {
           data={[
             {
               src: "/icon.jpeg",
-              label: "$SOL",
+              label: "SOL",
               value: 150000,
             },
             {
               src: "/icon.jpeg",
-              label: "$MUSK",
+              label: "MUSK",
               value: 4000000,
             },
             {
               src: "/icon.jpeg",
-              label: "$ETH",
+              label: "ETH",
               value: 4000000,
             },
             // {

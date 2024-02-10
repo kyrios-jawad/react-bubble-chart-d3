@@ -115,9 +115,9 @@ export default class BubbleChart extends Component {
 		// Call to the function that draw the bubbles.
 		this.renderBubbles(nodes, data, color);
 		// Call to the function that draw the legend.
-		// if (showLegend) {
-		// 	this.renderLegend(legendWidth, height, bubblesWidth, nodes, color);
-		// }
+		if (showLegend) {
+			this.renderLegend(legendWidth, height, bubblesWidth, nodes, color);
+		}
 	}
 
 	renderBubbles(nodes, data) {
@@ -125,7 +125,7 @@ export default class BubbleChart extends Component {
 		const height = 600;
 		const svg = d3
 			.select(this.svg)
-			.attr('class', 'graph')
+      .attr("class", "bubble-chart")
 			.attr('viewBox', [0, 0, width, height])
 			.attr('font-size', 10)
 			.attr('font-family', 'Roboto')
@@ -191,7 +191,7 @@ export default class BubbleChart extends Component {
 			.attr('class', 'labels')
 			.attr('dy', '.2em')
 			.text(function (d) {
-				return `${d.data.label}`;
+				return `$${d.data.label}`;
 			})
 			.attr('font-family', 'Roboto')
 			.attr('font-size', function (d) {
