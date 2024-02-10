@@ -115,6 +115,12 @@ export default class BubbleChart extends Component {
         );
       });
 
+    let bubbleOffsetX, bubbleOffsetY;
+
+    // console.log("noeds");
+    // console.log(nodes);
+    // console.log("");
+
     const node = bubbleChart
       .selectAll(".node")
       .data(nodes)
@@ -122,12 +128,14 @@ export default class BubbleChart extends Component {
       .append("g")
       .attr("class", "node")
       .attr("transform", function (d) {
+        bubbleOffsetX = d.x;
+        bubbleOffsetY = d.x;
         return "translate(" + d.x + "," + d.y + ")";
       })
       .on("click", function (d) {
         bubbleClickFun(d.label);
       });
-
+      
     let circle = node
       .append("circle")
       .attr("id", function (d) {
@@ -149,9 +157,28 @@ export default class BubbleChart extends Component {
         d3.select(this).attr("r", r);
       });
     // Define the filter
-    const defs = circle.append("defs");
+    const defs2 = circle.append("defs");
 
-    const filter = defs
+    // nodes.forEach((node) => {
+    //   console.log("nodee");
+    //   console.log(node);
+    //   console.log("");
+
+    //   // Create the clipPath element with an ID
+    //   let clipPath = defs.append("clipPath").attr("id", `clip-${node.id}`);
+
+    //   // Append a circle to the clipPath and set its attributes
+    //   clipPath
+    //     .append("circle")
+    //     .attr("cx", node.x) // Assuming node.x is the center x of your node
+    //     .attr("cy", node.y) // Assuming node.y is the center y of your node
+    //     .attr("r", 41); // The radius of the clipping circle
+    // });
+
+    // .attr("id", "drop-shadow")
+    // .attr("height", "150%");
+
+    const filter = defs2
       .append("filter")
       .attr("id", "drop-shadow")
       .attr("height", "150%");
@@ -187,26 +214,101 @@ export default class BubbleChart extends Component {
     feMerge.append("feMergeNode").attr("in", "shadow");
     feMerge.append("feMergeNode").attr("in", "SourceGraphic");
     //// image work
+
+
     node
-      .append("image")
-      .attr("xlink:href", function (d) {
-        return d.data.src;
+    .append("text")
+    .attr("class", "heading-text")
+    .style("font-size", d=>{
+      const r = d.r * 0.;
+      // console.log("r",r,valueFont.size);
+      return`${valueFont.size * d.r / 10 }px`
+    })
+    .style("font-weight", (d) => {
+      return valueFont.weight ? valueFont.weight : 600;
+    })
+    .style("font-family", valueFont.family)
+    .style("fill", () => {
+      return valueFont.color ? valueFont.color : "#000";
+    })
+    .style("stroke", () => {
+      return valueFont.lineColor ? valueFont.lineColor : "#000";
+    })
+    .style("stroke-width", () => {
+      return valueFont.lineWeight ? valueFont.lineWeight : 0;
+    })
+    .text(function (d) {
+      return d.label
+    });
+    // node
+    //   .append("image")
+    //   .attr("xlink:href", function (d) {
+    //     return d.data.src;
+    //   })
+    //   .attr("clip-path", function (d) {
+    //     return "url(#clip-" + d.id + ")";
+    //   })
+
+    //   .attr("x", function (d) {
+    //     // clipCx = -d.r * 0.2;
+    //     return -d.r * 0.2;
+    //   })
+    //   .attr("r", function (d) {
+    //     // clipR = d.r - d.r * 0.04;
+    //     return d.r - d.r * 0.04;
+    //   })
+    //   .attr("y", function (d) {
+    //     // clipCy = -d.r * 0.2;
+    //     return -d.r * 0.2;
+    //   })
+    //   .attr("width", function (d) {
+    //     return d.r * 0.2;
+    //   })
+    //   .attr("height", function (d) {
+    //     return d.r * 0.2;
+    //   });
+
+    const defs3 = node.append("defs");
+
+    let clipPath = defs3.append("clipPath").attr("id", (d) => {
+      console.log("d");
+      console.log(d);
+      console.log("");
+
+      return `clip-${d.id}`;
+    });
+
+    // Append a circle to the clipPath and set its attributes
+    clipPath
+      .append("circle")
+      .attr("cx", (d) => {
+        console.log("d");
+        console.log(d);
+        console.log("");
+        return 0;
+        return d.x;
       })
-      .attr("x", function (d) {
-        return -d.r * 0.2;
+      .attr("cy", (d) => {
+        console.log("d");
+        console.log(d);
+        console.log("");
+        return 0;
+        return d.y;
       })
-      .attr("r", function (d) {
-        return d.r - d.r * 0.04;
-      })
-      .attr("y", function (d) {
-        return -d.r * 0.2;
-      })
-      .attr("width", function (d) {
-        return d.r * 0.2;
-      })
-      .attr("height", function (d) {
-        return d.r * 0.2;
+      .attr("r", (d) => {
+        console.log("d");
+        console.log(d);
+        console.log("");
+
+        return 44;
       });
+
+    // For each node, add a clipPath
+
+    // console.log("node");
+    // console.log(node);
+    // console.log("");
+
     // to do
     // 	node
     // 	.append('svg:pattern')
@@ -257,9 +359,6 @@ export default class BubbleChart extends Component {
       .append("text")
       .attr("class", "value-text")
       .style("font-size", `${valueFont.size * 0.5}px`)
-      .attr("clip-path", function (d) {
-        return "url(#clip-" + d.id + ")";
-      })
       .style("font-weight", (d) => {
         return valueFont.weight ? valueFont.weight : 600;
       })
@@ -281,9 +380,6 @@ export default class BubbleChart extends Component {
       .append("text")
       .attr("class", "label-text")
       .style("font-size", `${labelFont.size * 0.1}px`)
-      .attr("clip-path", function (d) {
-        return "url(#clip-" + d.id + ")";
-      })
       .style("font-weight", (d) => {
         return labelFont.weight ? labelFont.weight : 600;
       })
@@ -301,8 +397,24 @@ export default class BubbleChart extends Component {
         return d.label;
       });
 
-    // Center the texts inside the circles.
-    d3.selectAll(".label-text")
+    // // Center the texts inside the circles.
+    d3.selectAll(".heading-text")
+    .attr("dy", "-0.2em")
+      .attr("x", function (d) {
+        const self = d3.select(this);
+        const width = self.node().getBBox().width;
+        return -(width / 2);
+      })
+      .style("opacity", function (d) {
+        const self = d3.select(this);
+        const width = self.node().getBBox().width;
+        d.hideLabel = width * 1.05 > d.r * 2;
+        return d.hideLabel ? 0 : 1;
+      })
+      .attr("y", function (d) {
+        return labelFont.size;
+      });
+      d3.selectAll(".label-text")
       .attr("x", function (d) {
         const self = d3.select(this);
         const width = self.node().getBBox().width;
@@ -326,8 +438,9 @@ export default class BubbleChart extends Component {
       return valueFont.size * (width * 0.1);
     });
 
-    // Center the texts inside the circles.
+    // // Center the texts inside the circles.
     d3.selectAll(".value-text")
+      .attr("dy", "0.2em")
       .attr("x", function (d) {
         const self = d3.select(this);
         const width = self.node().getBBox().width;

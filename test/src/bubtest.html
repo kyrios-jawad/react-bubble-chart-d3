@@ -1,0 +1,83 @@
+<svg width="1000" height="1000">
+  <g class="bubble-chart" transform="translate(-40,-8)">
+    <g
+      class="node"
+      transform="translate(440.00000000000006,440.00000000000006)"
+    >
+      <circle
+        id="kirby"
+        r="422.40000000000003"
+        style="fill: rgb(18, 20, 28); z-index: 1; filter: url('#drop-shadow')"
+      >
+        <!-- <defs>
+          <filter id="drop-shadow" height="150%">
+            <feGaussianBlur
+              in="SourceAlpha"
+              stdDeviation="5"
+              result="blur"
+            ></feGaussianBlur>
+            <feOffset in="blur" dx="0" dy="10" result="offsetBlur"></feOffset>
+            <feFlood flood-color="rgba(18, 20, 28, 1)" result="color"></feFlood>
+            <feComposite
+              in="color"
+              in2="offsetBlur"
+              operator="in"
+              result="shadow"
+            ></feComposite>
+            <feMerge>
+              <feMergeNode in="shadow"></feMergeNode>
+              <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+          </filter>
+        </defs> -->
+      </circle>
+      <defs>
+        <clipPath id="clip-kirby">
+          <circle cx="-30" cy="-40" r="40"></circle>
+        </clipPath>
+      </defs>
+      <image
+        xlink:href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/222579/beagle400.jpg"
+        clip-path="url(#clip-kirby)"
+        x="-88.00000000000001"
+        r="422.40000000000003"
+        y="-88.00000000000001"
+        width="88.00000000000001"
+        height="88.00000000000001"
+      ></image>
+
+      <text
+        class="value-text"
+        x="-31.63671875"
+        y="32"
+        style="
+          font-size: 28.4625px;
+          font-weight: bold;
+          font-family: Arial;
+          fill: rgb(255, 255, 255);
+          stroke: rgb(0, 0, 0);
+          stroke-width: 0;
+        "
+      >
+        4.0M
+      </text>
+      <text
+        class="label-text"
+        x="-1.25390625"
+        y="11"
+        style="
+          font-size: 1.1px;
+          font-weight: normal;
+          font-family: Arial;
+          fill: rgb(255, 255, 255);
+          stroke: rgb(0, 0, 0);
+          stroke-width: 0;
+          opacity: 1;
+        "
+      >
+        Kirby
+      </text>
+      <title>Kirby</title>
+    </g>
+  </g>
+</svg>

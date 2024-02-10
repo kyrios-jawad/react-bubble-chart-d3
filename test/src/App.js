@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { Component } from "react";
+import logo from "./logo.svg";
 
-import BubbleChart from './module/index';
+import BubbleChart from "./module/index";
 
-import './App.css';
+import "./App.css";
 
 class App extends Component {
   render() {
@@ -13,7 +13,9 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <h1 className="App-intro">Example of 'react-bubble-chart-d3' Component.</h1>
+        <h1 className="App-intro">
+          Example of 'react-bubble-chart-d3' Component.
+        </h1>
         <br />
         <BubbleChart
           width={1000}
@@ -22,7 +24,17 @@ class App extends Component {
           data={[
             {
               src: "/icon.jpeg",
-              label: "Kirby",
+              label: "$SOL",
+              value: 150000,
+            },
+            {
+              src: "/icon.jpeg",
+              label: "$MUSK",
+              value: 4000000,
+            },
+            {
+              src: "/icon.jpeg",
+              label: "$ETH",
               value: 4000000,
             },
             // {
