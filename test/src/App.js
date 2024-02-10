@@ -25,17 +25,17 @@ class App extends Component {
             {
               src: "/icon.jpeg",
               label: "SOL",
-              value: 150000,
+              value: 466,
             },
             {
               src: "/icon.jpeg",
               label: "MUSK",
-              value: 4000000,
+              value: 41,
             },
             {
               src: "/icon.jpeg",
               label: "ETH",
-              value: 4000000,
+              value: 400,
             },
             // {
             //    src: "/icon.jpeg",
